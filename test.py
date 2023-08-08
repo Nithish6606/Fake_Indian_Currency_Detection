@@ -1,11 +1,11 @@
 import cv2
-import os
 import numpy as np
-from skimage.measure import compare_ssim
+from skimage.metrics import structural_similarity
 import pickle
 # for selecting the curreny for checking genuinity
 import tkinter as tk
 from tkinter import filedialog
+
 
 root = tk.Tk()
 root.withdraw()
@@ -31,7 +31,7 @@ cv2.imshow('segmented', th21)  # edge detected
 cv2.waitKey(0)  # Wait for a key press to
 cv2.destroyAllWindows()  # close the img window
 
-# comparing saved image and test image of currency
+# comparing saved image and test imagje of currency
 # loading saved segmented image
 
 
@@ -40,17 +40,21 @@ th2 = pickle.load(infile)
 infile.close()
 
 
-(score, diff) = compare_ssim(th2, th21, full=True)
-diff = (diff * 255).astype("uint8")
+(score, diff) = structural_similarity(th2, th21, full=True)
+#diff = (diff * 255).astype("uint8")
 print("SSIM: {}".format(score))
-cv2.imshow('difference', diff)
+#cv2.imshow('difference', diff)
 cv2.waitKey(0)  # Wait for a key press to
 cv2.destroyAllWindows()  # close the img window
 
 from tkinter import messagebox
 
-if score == 1:
-    messagebox.showinfo("Message", "currency is genuine")
+if score ==1:
+
+    messagebox.showinfo("Message", "GIVEN CURRENCY IS ORIGINAL")
+
+
 else:
-    messagebox.showinfo("Message", "currency is fake")
+
+    messagebox.showinfo("Message", "GIVEN CURRENCY IS FAKE")
 

@@ -1,10 +1,9 @@
 import cv2
-import os
 import numpy as np
 import pickle
 
-img = cv2.imread(r"C:\Users\SHAFEEK\Anaconda3\Scripts\currency detector\2000\2000front.jpeg")  # reading the image file
-img1 = cv2.imread(r"C:\Users\SHAFEEK\Anaconda3\Scripts\currency detector\2000\2000back.jpeg")
+img = cv2.imread(r"Dataset/500/Test/front ori.jpg")  # reading the image file
+img1 = cv2.imread(r"Dataset/500/Test/back or.jpg")
 res1 = cv2.resize(img, (800, 300))  # resizing the img for display
 res2 = cv2.resize(img1, (800, 300))  # resizing the img for display
 image = np.concatenate((res1, res2), axis=0)  # concatenating images for display
@@ -21,7 +20,7 @@ cv2.imshow('segmented', th2)  # segmented
 cv2.waitKey(0)        # Wait for a key press to
 cv2.destroyAllWindows()  # close the img window
 
-# for saving segmented image
+#for saving segmented image
 #with open('saved.pkl', 'wb') as f:
 #    pickle.dump(th2, f)
 

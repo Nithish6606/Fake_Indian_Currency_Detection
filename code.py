@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 import pickle
 
-img = cv2.imread(r"Dataset/500/Test/front ori.jpg")  # reading the image file
-img1 = cv2.imread(r"Dataset/500/Test/back or.jpg")
+img = cv2.imread(r"Dataset/500/500front.jpeg")  # reading the image file
+img1 = cv2.imread(r"Dataset/500/500back.jpeg")
 res1 = cv2.resize(img, (800, 300))  # resizing the img for display
 res2 = cv2.resize(img1, (800, 300))  # resizing the img for display
 image = np.concatenate((res1, res2), axis=0)  # concatenating images for display

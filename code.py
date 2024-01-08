@@ -9,7 +9,7 @@ def resizeAndcon(img,img1):
     return image 
 trainInput=[]
 #dataset=resizeAndcon(img,img1)
-for directory in ['Dataset/500/Real/1note/','Dataset/500/Test/']:
+for directory in ['Dataset/500/']:
     for filename in os.listdir(directory):
         img=cv2.imread(directory+'500front.jpeg')
         img1=cv2.imread(directory+'500back.jpeg')
@@ -18,7 +18,7 @@ for directory in ['Dataset/500/Real/1note/','Dataset/500/Test/']:
         gray = cv2.cvtColor(img_median, cv2.COLOR_BGR2GRAY)  # converting to gray scale
         edges = cv2.Canny(gray, 60, 180)  # canny edge detection
         th2 = cv2.adaptiveThreshold(edges, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 10)              # segmentation using adaptive thresholding
-        #trainInput.append(np.ravel(th2.astype(np.int16, copy = False)))
+        trainInput.append(np.ravel(th2.astype(np.int16, copy = False)))
         #print(filename)
     cv2.imshow('original image',image)
     cv2.imshow('noise filtered', img_median)   # filtered images
@@ -29,7 +29,7 @@ for directory in ['Dataset/500/Real/1note/','Dataset/500/Test/']:
     cv2.destroyAllWindows()  # close the img window
 
     #dataset=tuple(trainInp
-    outfile=open('saved.pkl','ab')
+    outfile=open('saved','ab')
     p.dump(th2,outfile)
     outfile.close()
       

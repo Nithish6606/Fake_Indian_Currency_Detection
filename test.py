@@ -43,7 +43,7 @@ infile.close()
 (score, diff) = structural_similarity(th2, th21, full=True)
 #diff = (diff * 255).astype("uint8")
 print("SSIM: {}".format(score))
-#cv2.imshow('difference', diff)
+cv2.imshow('difference', diff)
 cv2.waitKey(0)  # Wait for a key press to
 cv2.destroyAllWindows()  # close the img window
 
